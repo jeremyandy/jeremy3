@@ -161,6 +161,7 @@
      <Compile Include="Assets\Scripts\CarMovement.cs" />
      <Compile Include="Assets\Scripts\CarRespawn.cs" />
      <Compile Include="Assets\Scripts\Collision.cs" />
+     <Compile Include="Assets\Scripts\GITHUBPractice.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameOverGUI.cs" />
      <Compile Include="Assets\Scripts\GameState.cs" />
