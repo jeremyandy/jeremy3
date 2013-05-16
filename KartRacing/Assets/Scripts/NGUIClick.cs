@@ -10,7 +10,11 @@ public class NGUIClick : MonoBehaviour {
 			case GameScreen.MainMenu:
 				
 				GameState.gameScreen= GameScreen.MainGame;
-				Application.LoadLevel("Game");
+				if(gameObject.name=="StartGameButton")
+					Application.LoadLevel("Game");
+				else{
+					Application.Quit();	
+				}
 				break;
 			
 			case GameScreen.MainGame:

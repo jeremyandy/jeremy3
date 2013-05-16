@@ -10,12 +10,13 @@ public class MainMenuGUI : MonoBehaviour {
 	GameObject img2GO;
 	
 	IEnumerator Start () {
+		//yield return new WaitForSeconds(.5f);
 		
 		startButtonGO= GameObject.Find ("StartGameButton");
 		titleTextGO= GameObject.Find ("TitleLabel");
 		quitButtonGO= GameObject.Find ("QuitGameButton");
-		img1GO= GameObject.Find ("CarImg1");
-		img2GO= GameObject.Find ("CarImg2");
+		img1GO= GameObject.Find ("CarImg1(Clone)");
+		img2GO= GameObject.Find ("CarImg2(Clone)");
 		
 		quitButtonGO.collider.enabled= false;
 		startButtonGO.collider.enabled= false;

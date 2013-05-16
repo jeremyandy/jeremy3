@@ -9,24 +9,26 @@ public class CarMovement : MonoBehaviour {
 	InputMovement inputMovement;
 	CarRespawn carRespawn;
 	public float[] lane;
-
+	Transform myTransform;
 	
 	void Start(){
-		
+		myTransform= transform;
 		normalSpeed=2;	
 		inputMovement= GameObject.FindGameObjectWithTag("Player").GetComponent<InputMovement>();
 		carRespawn= GameObject.FindGameObjectWithTag("CarRespawn").GetComponent<CarRespawn>();
 		lane= new float[5];
+		
 		for(int i=0; i<5;i++){
 			lane[i]= carRespawn.lane[i].transform.position.x;		
 		}
+		
 		ChangeCarPos();
 		
 	}
 	
 	void Update(){
 		normalSpeed+=Time.deltaTime*.02f;
-		transform.Translate(0,0, normalSpeed* inputMovement.enemySpeed*  Time.deltaTime);	
+		myTransform.Translate(0,0, normalSpeed* inputMovement.enemySpeed*  Time.deltaTime);	
 
 	}
 	
@@ -34,7 +36,7 @@ public class CarMovement : MonoBehaviour {
 	IEnumerator delayRespawn(float delayTime){
 		yield return new WaitForSeconds(delayTime);
 		float randomPosZ= Random.Range(0.1f,10.1f);
-		transform.position= new Vector3(transform.position.x, transform.position.y, transform.position.z+randomPosZ);	
+		myTransform.position= new Vector3(myTransform.position.x, myTransform.position.y, myTransform.position.z+randomPosZ);	
 	}
 	
 	void OnTriggerEnter(Collider other) {
@@ -58,19 +60,19 @@ public class CarMovement : MonoBehaviour {
 		
 			switch(randomPos){
 				case 0:
-					transform.position= new Vector3(lane[0], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[0], 1, randomPosZ);
 					break;
 				case 1:
-					transform.position= new Vector3(lane[1], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[1], 1, randomPosZ);
 					break;
 				case 2:
-					transform.position= new Vector3(lane[2], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[2], 1, randomPosZ);
 					break;
 				case 3:
-					transform.position= new Vector3(lane[3], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[3], 1, randomPosZ);
 					break;
 				case 4:
-					transform.position= new Vector3(lane[4], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[4], 1, randomPosZ);
 					break;	
 				default:		
 					break;

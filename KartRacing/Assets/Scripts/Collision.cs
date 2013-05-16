@@ -8,7 +8,10 @@ public class Collision : MonoBehaviour {
 	public GameObject soundExplosion;
 	GameObject mainCamera;
 	
+	
+	
 	void Start(){
+		
 		gameManager= GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 		explosion= GameObject.FindGameObjectWithTag ("Explosion");
 		explosion.particleEmitter.emit = false;

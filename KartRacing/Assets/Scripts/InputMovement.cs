@@ -8,12 +8,29 @@ public class InputMovement : MonoBehaviour {
 	public float laneSpeed;
 	public float scoreMultiplier;
 	public float motorSpeed;
+	Transform myTransform;
+	public float iPx;
+	private float moveThreshold= .2f;
+	
+	void Start(){
+		
+	}
 	
 	void Update () {
-		
-		float horizontalSpeed = Input.GetAxis("Horizontal") * Time.deltaTime * -movementSpeed;
-		transform.Translate(horizontalSpeed, 0, 0);
-		transform.position= new Vector3(Mathf.Clamp(transform.position.x, -4.8f, 5.1f),transform.position.y,transform.position.z);
+		iPx = iPhoneInput.acceleration.x;	
+		myTransform= transform;
+		//float horizontalSpeed = Input.GetAxis("Horizontal") * Time.deltaTime * -movementSpeed;
+		if(iPx>.2f){
+			float horizontalSpeed = iPx * Time.deltaTime * movementSpeed;
+			myTransform.Translate(-horizontalSpeed, 0, 0);
+		}
+		else if(iPx<-.2f){
+			float horizontalSpeed = iPx * Time.deltaTime * -movementSpeed;
+			myTransform.Translate(horizontalSpeed, 0, 0);
+
+		}
+		myTransform.position= new Vector3(Mathf.Clamp(myTransform.position.x, -4f, 4.3f),myTransform.position.y,myTransform.position.z);
+
 		
 		if(Input.GetKey(KeyCode.W)){
 			enemySpeed= StaticVar.enemySpeedFast;
@@ -28,6 +45,5 @@ public class InputMovement : MonoBehaviour {
 			motorSpeed= StaticVar.motorSpeedSlow;
 		}		
 		
-	}
-	
+	}	
 }

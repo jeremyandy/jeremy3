@@ -8,8 +8,10 @@ public class Motorcycle : MonoBehaviour {
 	InputMovement inputMovement;
 	CarRespawn carRespawn;
 	Collision collision;
+	Transform myTransform;
 	
 	void Start () {
+		myTransform= transform;
 		normalSpeed=1;
 		carRespawn= GameObject.FindGameObjectWithTag("CarRespawn").GetComponent<CarRespawn>();
 		inputMovement= GameObject.FindGameObjectWithTag("Player").GetComponent<InputMovement>();
@@ -25,7 +27,7 @@ public class Motorcycle : MonoBehaviour {
 	
 	void Update () {
 		normalSpeed+=Time.deltaTime*.01f;;
-		transform.Translate (0,0,-normalSpeed* inputMovement.motorSpeed*Time.deltaTime);
+		myTransform.Translate (0,0,-normalSpeed* inputMovement.motorSpeed*Time.deltaTime);
 		
 		if(transform.position.z>10){
 			ChangeMotorcyclePos();
@@ -40,19 +42,19 @@ public class Motorcycle : MonoBehaviour {
 		
 			switch(randomPos){
 				case 0:
-					transform.position= new Vector3(lane[0], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[0], 1, randomPosZ);
 					break;
 				case 1:
-					transform.position= new Vector3(lane[1], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[1], 1, randomPosZ);
 					break;
 				case 2:
-					transform.position= new Vector3(lane[2], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[2], 1, randomPosZ);
 					break;
 				case 3:
-					transform.position= new Vector3(lane[3], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[3], 1, randomPosZ);
 					break;
 				case 4:
-					transform.position= new Vector3(lane[4], 1, randomPosZ);
+					myTransform.position= new Vector3(lane[4], 1, randomPosZ);
 					break;	
 				default:		
 					break;
